@@ -6,6 +6,9 @@ function errorHandler(err, req, res, next) {
     console.error(err);
     if (err instanceof ApiError) {
         res.status(err.statusCode).json(ApiResponse.error(err.code, err.message));
+    } else if (err instanceof Parse.Error){
+        res.status(errorCodes.INTERNAL_SERVER_ERROR.statusCode)
+            .json(ApiResponse.error(err.code, err.message));
     } else {
         res.status(errorCodes.INTERNAL_SERVER_ERROR.statusCode)
             .json(ApiResponse.error(errorCodes.INTERNAL_SERVER_ERROR.code, err.message));

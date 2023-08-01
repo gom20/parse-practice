@@ -1,0 +1,1 @@
+require('./forumPost.cloud.js');
