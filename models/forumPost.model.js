@@ -1,16 +1,15 @@
-const ForumPost = Parse.Object.extend('ForumPost', {
+const ForumPostModel = Parse.Object.extend('ForumPost', {
     // Custom methods (if any)
 });
 
-ForumPost.schema = {
+ForumPostModel.schema = {
     className: 'ForumPost',
     fields: {
         objectId: { type: 'String', required: false },
         creator: { type: 'String', required: false },
         postText: { type: 'String', required: true },
-        updatedAt: { type: 'Date', required: false },
         isDeleted: { type: 'Boolean', required: false },
     },
 };
 
-module.exports = ForumPost;
+module.exports = ForumPostModel;

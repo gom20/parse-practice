@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const forumPostController = require('../controllers/forumPost.controller');
+const forumPostController = require('../controllers/api/forumPost.controller');
 
-// Create a new ForumPost
 router.post( '/', forumPostController.createForumPost);
 
-// Get all ForumPosts
 router.get( '/', forumPostController.getForumPosts);
 
-// Get a ForumPost
-router.get('/:id', forumPostController.getForumPost);
+router.get('/:postId', forumPostController.getForumPost);
 
-// Update a ForumPost
-router.put('/:id', forumPostController.updateForumPost);
+router.put('/:postId', forumPostController.updateForumPost);
 
-// Delete a ForumPost
-router.delete('/:id', forumPostController.deleteForumPost);
+router.delete('/:postId', forumPostController.deleteForumPost);
+
+router.post('/:postId/like', forumPostController.likeForumPost);
+
+router.post('/business/discussion/:campaignId', forumPostController.likeForumPost);
 
 module.exports = router;
