@@ -1,8 +1,6 @@
-const ForumPostService = require('../../services/forumPost.service');
-const asyncWrapper = require("../../utils/asyncWrapper");
 async function renderDiscussionBoard(req, res) {
-    const formPost = await ForumPostService.createForumPost(req.body);
-    return res.render()
+    // create data object for rendering view
+    return res.render();
 }
 
 module.exports = {

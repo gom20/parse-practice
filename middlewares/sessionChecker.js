@@ -1,7 +1,5 @@
 const ApiError = require("../errors/ApiError");
 const errorCodes = require("../errors/errorCodes");
-const jwt = require('jsonwebtoken');
-
 async function sessionChecker(req, res, next) {
     const sessionToken = req.headers['x-parse-session-token'];
     if (!sessionToken) {

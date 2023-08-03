@@ -2,36 +2,30 @@ const ForumPostService = require('../../services/forumPost.service');
 const asyncWrapper = require("../../utils/asyncWrapper");
 async function createForumPost(req, res) {
     const formPost = await ForumPostService.createForumPost(req.body);
-    res.json(formPost);
+    res.sendResponse(formPost);
 }
 
 async function getForumPosts(req, res) {
     const forumPosts = await ForumPostService.getAllForumPosts();
-    res.json(forumPosts);
+    res.sendResponse(forumPosts);
 }
 
 async function getForumPost(req, res) {
-    const postId = req.params.postId;
-    const forumPost = await ForumPostService.getForumPostById(postId);
-    res.json(forumPost);
+    const id = req.params.id;
+    const forumPost = await ForumPostService.getForumPostById(id);
+    res.sendResponse(forumPost);
 }
 
 async function updateForumPost(req, res) {
-    const postId = req.params.postId;
-    const updatedForumPost = await ForumPostService.updateForumPostById(postId, req.body);
-    res.json(updatedForumPost);
+    const id = req.params.id;
+    const updatedForumPost = await ForumPostService.updateForumPostById(id, req.body);
+    res.sendResponse(updatedForumPost);
 }
 
 async function deleteForumPost(req, res) {
-    const postId = req.params.postId;
-    await ForumPostService.deleteForumPostById(postId);
-    res.json({postId: postId});
-}
-
-async function likeForumPost(req, res) {
-    const postId = req.params.postId;
-    await ForumPostService.likeForumPost(postId);
-    res.json({postId: postId});
+    const id = req.params.id;
+    await ForumPostService.deleteForumPostById(id);
+    res.sendResponse({id: id});
 }
 
 module.exports = {
@@ -40,5 +34,4 @@ module.exports = {
     getForumPost: asyncWrapper(getForumPost),
     updateForumPost: asyncWrapper(updateForumPost),
     deleteForumPost: asyncWrapper(deleteForumPost),
-    likeForumPost: asyncWrapper(likeForumPost)
 };

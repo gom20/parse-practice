@@ -6,6 +6,7 @@ const loadRoutes = require('../loaders/routeLoader');
 const errorHandler = require("../middlewares/errorHandler");
 const responseWrapper = require("../middlewares/responseWrapper");
 const sessionChecker = require("../middlewares/sessionChecker");
+const forumPostController = require("../controllers/api/forumPost.controller");
 
 async function startServer() {
     const app = express();
@@ -20,6 +21,7 @@ async function startServer() {
 
     // Set body parser
     app.use(express.json())
+    app.use(responseWrapper);
 
     // Serve the Parse API on the /parse URL prefix
     app.use('/parse', server);
@@ -28,17 +30,16 @@ async function startServer() {
     // Load and mount all the routes
     loadRoutes(app);
 
-    app.use(responseWrapper);
     app.use(errorHandler);
 
     // Listen
     app.listen(process.env.PORT, function () {
-        console.log('parse-server-example running on port 1337.');
+        console.log('parse-server running on port 1337.');
     });
 }
 
 startServer().then(() => {
-
+    console.log('Started Parse Server.');
 }).catch((error) => {
     console.error('Error starting Parse Server:', error);
 });

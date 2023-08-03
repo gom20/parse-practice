@@ -1,9 +1,8 @@
 const ForumPostRepository = require('../repositories/forumPost.repository');
-const ForumPost = require("../models/forumPost.model");
-const ApiError = require("../errors/ApiError");
-const errorCodes = require("../errors/errorCodes");
 
 async function createForumPost(data) {
+    // business logic
+    // if error, throw new ApiError
     return await ForumPostRepository.create(data);
 }
 
@@ -11,28 +10,22 @@ async function getAllForumPosts() {
     return await ForumPostRepository.findAll();
 }
 
-async function getForumPostById(postId) {
-    return await ForumPostRepository.findById(postId);
+async function getForumPostById(id) {
+    return await ForumPostRepository.findById(id);
 }
 
-async function updateForumPostById(postId, data) {
-    return await ForumPostRepository.updateById(postId, data);
+async function updateForumPostById(id, data) {
+    return await ForumPostRepository.updateById(id, data);
 }
 
-async function deleteForumPostById(postId) {
-    return await ForumPostRepository.deleteById(postId);
+async function deleteForumPostById(id) {
+    return await ForumPostRepository.deleteById(id);
 }
-
-async function likeForumPost(postId) {
-    return await ForumPostRepository.likeForumPost(postId);
-}
-
 
 module.exports = {
     createForumPost,
     getAllForumPosts,
     getForumPostById,
     updateForumPostById,
-    deleteForumPostById,
-    likeForumPost
+    deleteForumPostById
 };

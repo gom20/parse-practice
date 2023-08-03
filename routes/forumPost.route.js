@@ -6,14 +6,10 @@ router.post( '/', forumPostController.createForumPost);
 
 router.get( '/', forumPostController.getForumPosts);
 
-router.get('/:postId', forumPostController.getForumPost);
+router.get('/:id', forumPostController.getForumPost);
 
-router.put('/:postId', forumPostController.updateForumPost);
+router.put('/:id', forumPostController.updateForumPost);
 
-router.delete('/:postId', forumPostController.deleteForumPost);
-
-router.post('/:postId/like', forumPostController.likeForumPost);
-
-router.post('/business/discussion/:campaignId', forumPostController.likeForumPost);
+router.delete('/:id', forumPostController.deleteForumPost);
 
 module.exports = router;
